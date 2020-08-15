@@ -1,0 +1,21 @@
+<div class="container">
+    <h5>Prueba Empirica de la ley <app-tooltip-explicacion [informacion]="mensaje"></app-tooltip-explicacion></h5> 
+    <div class="form-group">
+      <label for="ListaDeNumeros"></label>
+      <textarea class="form-control" [(ngModel)]="listaString" id="ListaDeNumeros" rows="4"></textarea>
+    </div>
+    <div class="aling-rigth">
+        <button type="button" class="btn btn-primary ml-1" (click)="calcular()"> Numeros Random</button>
+        <button type="button" class="btn btn-primary ml-1" (click)="calcularTextArea()"> Calcular Valores Ingresados</button>
+        <button type="button" class="btn btn-secudanry ml-1" (click)="limpiar()"> Limpiar Grafico</button>
+    </div>
+
+    <div class="row">
+        <div class="col-9">
+            <app-grafico-barra [dataset]="resultadoDeLaw"></app-grafico-barra>
+        </div>
+        <div class="col-3">
+            <app-tabla-explicatiba [dataset]="resultadoDeLaw"></app-tabla-explicatiba>
+        </div>
+    </div>
+</div>
