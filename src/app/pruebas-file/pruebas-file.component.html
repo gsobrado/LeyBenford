@@ -5,18 +5,14 @@
     <div class="form-group">
         <div class="row">
             <div class="col-8">
-                <input type="file" #myInput class="form-control" name="" id="file" aria-describedby="helpId" (change)="cargaFile($event)">
+                <input type="file" #myInput class="form-control-file" name="" id="file" aria-describedby="helpId" (change)="cargaFile($event)">
             </div>
             <div class="col-4">
                 <button type="button" class="btn btn-primary ml-1" (click)="calcular()"> Calcular </button>
                 <button type="button" class="btn btn-secudanry ml-1" (click)="limpiar()"> Limpiar </button>
             </div>
         </div>
-
     </div>
-    <div class="aling-rigth">
-    </div>
-
     <br>
 
     <div class="row">

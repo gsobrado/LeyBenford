@@ -11,7 +11,7 @@ import { LoadingService } from '../services/loading/loading.service';
 })
 export class PruebasImagenComponent implements OnInit {
 
-  mensaje : String = "Esta prueba busca los pixeles de las imagens subidas y guarda los colores (RGB), a esta lista le aplica la ley de Benford";
+  mensaje : String = "Esta prueba busca los pixeles de las imagens subidas y guarda los colores (RGB), a esta lista le aplica la ley de Benford <br> 'Calcular' es la suman de los 3 colores, los demas son cada color por separado";
   fileSeleccionado : File = null;
   previewUrl:any = null;
 

@@ -1,21 +1,23 @@
 <div class="container">
     <br>
-    <h5>Prueba la ley en Files <app-tooltip-explicacion [informacion]="mensaje"></app-tooltip-explicacion></h5> 
+    <h5>Prueba la ley en Imagenes <app-tooltip-explicacion [informacion]="mensaje"></app-tooltip-explicacion></h5> 
     <br>
     <div class="form-group">
         <div class="row">
-            <div class="col-8">
-                <input type="file" #coverFilesInput class="form-control" name="" id="file" aria-describedby="helpId" (change)="onChange($event)">
-            </div>
-            <div class="col-4" *ngIf="uploadSuccess">
-                Upload Successful of file with size : {{size}} bytes <br>
-                The image height is : {{height}} <br>
-                The image width is : {{width}} <br>
-            </div>
-            <div class="image-preview mb-3 col-12" *ngIf="previewUrl">
-                <img [src]="previewUrl" />                 
-            </div>
             <div class="col-12">
+                <input type="file" #coverFilesInput class="form-control-file" name="" id="file" aria-describedby="helpId" (change)="onChange($event)">
+            </div>
+            <div class="col-12" *ngIf="uploadSuccess">
+                <br>
+                Tamaño del Archivo : {{size}} bytes,  Alto de la imagen : {{height}}px, Ancho de la imagen : {{width}}px, Total de Pixeles : {{arrayOfPixelTotal.length}} <br>
+            </div>
+            <div class="image-preview mb-3 col-12 text-center" *ngIf="previewUrl">
+                <br>
+                <img [src]="previewUrl" />
+                <br>     
+            </div>
+            <div class="col-12 aling-rigth">
+                <br *ngIf="!uploadSuccess">
                 <button type="button" class="btn btn-primary ml-1" (click)="calcular('todos')"> Calcular </button>
                 <button type="button" class="btn btn-primary ml-1" (click)="calcular('red')"> Calcular Red </button>
                 <button type="button" class="btn btn-primary ml-1" (click)="calcular('green')"> Calcular Green </button>
@@ -23,11 +25,7 @@
                 <button type="button" class="btn btn-secudanry ml-1" (click)="limpiar()"> Limpiar </button>
             </div>
         </div>
-
     </div>
-    <div class="aling-rigth">
-    </div>
-
     <br>
 
     <div class="row">
