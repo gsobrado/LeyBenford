@@ -30,12 +30,17 @@ export class GraficoBarraComponent implements OnInit {
   public funcionLogaritimica = {data :[30.1, 17.6, 12.5, 9.7, 7.9, 6.7, 5.8, 5.1, 4.6] , label: "Funcion Logaritmica", type : "line"}
 
   dibujar(dataset : ResultadoLaw){
-    this.dataset = dataset;
-    if(dataset.resultadosNumbers != null){
-      this.dataset.resultadosNumbers.forEach((resultado, idenx) => {
-        this.barChartData[0].data[idenx] = resultado.porcentaje;
-        this.barChartData[1] = this.funcionLogaritimica;
-      })
+    if(dataset !=  null){
+      this.barChartData = [{data :[] , label: "Calculado"}];
+      this.dataset = dataset;
+      if(this.dataset.resultadosNumbers != null){
+        this.dataset.resultadosNumbers.forEach((resultado, idenx) => {
+          this.barChartData[0].data[idenx] = resultado.porcentaje;
+          this.barChartData[1] = this.funcionLogaritimica;
+        });
+      }else{
+        this.barChartData = [{data :[] , label: "Calculado"}];
+      }
     }else{
       this.barChartData = [{data :[] , label: "Calculado"}];
     }

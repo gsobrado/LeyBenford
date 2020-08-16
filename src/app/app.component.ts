@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoadingService } from './services/loading/loading.service';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BenfordLaw';
+
+  faSpinner = faSpinner;
+
+  constructor(public loadingService : LoadingService){
+
+  }
 }

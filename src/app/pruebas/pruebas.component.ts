@@ -74,7 +74,7 @@ export class PruebasComponent implements OnInit {
 
   limpiar(){
     this.resultadoDeLaw = new ResultadoLaw();
-    this.grafico.dibujar(this.resultadoDeLaw);
+    this.grafico.dibujar(null);
   }
 
 }

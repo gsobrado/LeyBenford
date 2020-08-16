@@ -1,0 +1,30 @@
+<div class="container">
+    <br>
+    <h5>Prueba la ley en Files <app-tooltip-explicacion [informacion]="mensaje"></app-tooltip-explicacion></h5> 
+    <br>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-8">
+                <input type="file" #myInput class="form-control" name="" id="file" aria-describedby="helpId" (change)="cargaFile($event)">
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary ml-1" (click)="calcular()"> Calcular </button>
+                <button type="button" class="btn btn-secudanry ml-1" (click)="limpiar()"> Limpiar </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="aling-rigth">
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-9">
+            <app-grafico-barra [dataset]="resultadoDeLaw"></app-grafico-barra>
+        </div>
+        <div class="col-3">
+            <app-tabla-explicatiba [dataset]="resultadoDeLaw"></app-tabla-explicatiba>
+        </div>
+    </div>
+</div>
