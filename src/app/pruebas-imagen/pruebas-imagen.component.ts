@@ -40,7 +40,6 @@ export class PruebasImagenComponent implements OnInit {
   }
 
   calcular(cual : String){
-    console.log(this.arrayOfPixelTotal);
     switch (cual) {
       case "todos":
         CalcularBenfortLaw.calcularBenfond(this.arrayOfPixelTotal).then(resultado => {
@@ -72,15 +71,12 @@ export class PruebasImagenComponent implements OnInit {
   }
 
   llenarArrays() : Promise<Boolean>{
-    console.log("llama al llenarArrays");
-    
     return new Promise((resolve, reject) => {
       var canvas = document.createElement('canvas');
       canvas.width = this.width;
       canvas.height = this.height;
       let contexto =  canvas.getContext('2d');
       contexto.drawImage(this.img, 0, 0);
-      console.log("lleno arrays", this.width);
       for (let x = 0; x < canvas.width; x++) {
         for (let y = 0; y < canvas.height; y++) {
           let data = contexto.getImageData(x, y, 1, 1).data;
