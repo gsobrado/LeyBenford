@@ -1,14 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <a class="navbar-brand" [routerLink]="['/welcome']">Benford-Law</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" 
-       [routerLink]="['/welcome']"  aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" [routerLink]="['/prueba']">Prueba de Ley</a>
-        <a class="nav-link active" [routerLink]="['/upload']">Archivos</a>
-        <a class="nav-link active" [routerLink]="['/image']">Imagenes</a>
-      </div>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/prueba']">Prueba de Ley <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/upload']">Archivos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/image']">Imagenes</a>
+          </li>
+        </ul>
     </div>
-  </nav>
+</nav>

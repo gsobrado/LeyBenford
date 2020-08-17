@@ -29,8 +29,10 @@
     "angular-cli-ghpages": "^0.6.2",
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
+    "jquery": "^3.5.1",
     "ng2-charts": "^2.3.3",
     "rxjs": "~6.5.5",
+    "tether": "^1.4.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
