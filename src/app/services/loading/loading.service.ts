@@ -6,11 +6,13 @@ import { Injectable } from '@angular/core';
 export class LoadingService {
 
   private visible = false;
+  private message : String = "";
 
   constructor() { }
 
-  show(){
+  show(message : String){
     this.visible = true;
+    this.message = message;
   }
 
   hide(){
@@ -19,5 +21,9 @@ export class LoadingService {
 
   isVisible(){
     return this.visible;
+  }
+
+  getMessage(){
+    return this.message;
   }
 }

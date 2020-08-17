@@ -1,6 +1,8 @@
 <div class="loader-container fade text-center text-primary fa-3x" *ngIf="loadingService.isVisible()" [ngClass]="{'in show' : loadingService.isVisible(), 'hidden' : !loadingService.isVisible()}">
     <br> <br> <br> <br> <br>
     <fa-icon [icon]="faSpinner" size="2x" [spin]="true"></fa-icon>
+    <br>
+    <p class="meesage" [innerHTML]="loadingService.getMessage()"></p>
 </div>
 <app-nav-bar></app-nav-bar>
 <router-outlet></router-outlet>
