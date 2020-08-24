@@ -107,7 +107,7 @@ export class PruebasImagenComponent implements OnInit {
 
 
   onChange(evt:any){
-    this.loadingService.show("Al Apicacion esta revistando Pixel por Pixel los colores RGB <br> Puede tardar dependeindo del tamaño de la imagen");
+    this.loadingService.show("Al Aplicacion esta revistando Pixel por Pixel los colores RGB <br> Puede tardar dependeindo del tamaño de la imagen");
     this.arrayOfPixelRed = [];
     this.arrayOfPixelGreen = [];
     this.arrayOfPixelBlue = [];
