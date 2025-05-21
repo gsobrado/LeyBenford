@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CalcularBenfortLaw } from '../Utils/CalcularBenfordLaw'
+import { CalcularBenfordLaw } from '../Utils/CalcularBenfordLaw';
 import { ResultadoLaw } from '../Model/ResultadoLaw';
 import { GraficoBarraComponent } from '../shared/grafico-barra/grafico-barra.component';
 
@@ -10,71 +10,85 @@ import { GraficoBarraComponent } from '../shared/grafico-barra/grafico-barra.com
 })
 export class PruebasComponent implements OnInit {
 
-  listaNumeros : number[];
-  listaString : String;
-  resultadoDeLaw : ResultadoLaw;
-  @ViewChild(GraficoBarraComponent) grafico:GraficoBarraComponent;
+  numberList: number[];
+  inputString: String;
+  benfordLawResult: ResultadoLaw;
+  @ViewChild(GraficoBarraComponent) chart: GraficoBarraComponent;
 
-  mensaje : String = "- El Boton 'Numero Random' genera 1000000 de numeros al azar con Math.random(). <br> - El boton 'Calcular Valores Ingresados' espera un lista de numero separados por ',' o '\n' (salto de linea), los enlista y les hace la prueba.";
+  infoMessage: String = "- El Boton 'Numero Random' genera 1000000 de numeros al azar con Math.random(). <br> - El boton 'Calcular Valores Ingresados' espera un lista de numero separados por ',' o '\\n' (salto de linea), los enlista y les hace la prueba.";
 
   constructor() { 
-    this.listaNumeros = new Array<number>();
+    this.numberList = new Array<number>();
   }
 
   ngOnInit(): void {
-    this.caclularRandoms();
+    this.calculateRandomNumbers();
   }
 
-  caclularRandoms() {
-    this.listaNumeros = new Array<number>();
+  calculateRandomNumbers() {
+    this.numberList = new Array<number>();
     for (let index = 0; index < 1000000; index++) {
-      this.listaNumeros.push(this.getRndInteger(1, 25555555));
+      this.numberList.push(this.getRndInteger(1, 25555555));
     }
   }
 
-  calcular() {
-    this.caclularRandoms();
-    this.limpiar();
-    CalcularBenfortLaw.calcularBenfond(this.listaNumeros).then(resultado => {
-      this.resultadoDeLaw = resultado;
-      this.grafico.dibujar(this.resultadoDeLaw);
-    });
+  calculateFromRandom() { 
+    this.calculateRandomNumbers(); 
+    this.clearChart(); 
+    this.benfordLawResult = CalcularBenfordLaw.calcularBenford(this.numberList); 
+    this.chart.dibujar(this.benfordLawResult); 
   }
 
-  calcularTextArea(){
-    this.limpiar();
-    CalcularBenfortLaw.calcularBenfond(this.getlistaNumero()).then(resultado => {
-      this.resultadoDeLaw = resultado;
-      this.grafico.dibujar(this.resultadoDeLaw);
-    });
+  calculateFromTextArea() { 
+    this.clearChart(); 
+    const numbers = this.getNumbersFromString(); 
+    if (numbers && numbers.length > 0) {
+        this.benfordLawResult = CalcularBenfordLaw.calcularBenford(numbers); 
+        this.chart.dibujar(this.benfordLawResult); 
+    } else {
+        this.clearChart(); 
+    }
   }
 
-  getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
+  getRndInteger(min: number, max: number): number { 
+    return Math.floor(Math.random() * (max - min)) + min;
   }
 
+  getNumbersFromString(): number[] { 
+    if (this.inputString && this.inputString.trim() !== "") { 
+      let stringItems: string[]; 
+      const hasComma = this.inputString.includes(","); 
+      const hasNewline = this.inputString.includes("\n"); 
 
-  getlistaNumero() {
-    if(this.listaString != null) {
-      let primerpaso = null;
-      if(this.listaString.includes(",") && this.listaString.includes("\n")){
-        console.log("Error Separa, y new linea");
-      }else if(this.listaString.includes(",")){
-        primerpaso = this.listaString.split(",");
-      } else if(this.listaString.includes("\n")) {
-        primerpaso = this.listaString.split("\n");
+      if (hasComma && hasNewline) {
+        stringItems = this.inputString.split('\n').flatMap(part => part.split(',')); 
+      } else if (hasComma) {
+        stringItems = this.inputString.split(","); 
+      } else if (hasNewline) {
+        stringItems = this.inputString.split('\n'); 
+      } else {
+        const num = parseInt(this.inputString.trim(), 10); 
+        return !isNaN(num) ? [num] : [];
       }
-      let respuesta = new Array<number>();
-      primerpaso.forEach(texto => {
-        respuesta.push(parseInt(texto, 10));
-      });
-      return respuesta;
+
+      const parsedNumbers: number[] = []; 
+      if (stringItems && stringItems.length > 0) { 
+        stringItems.forEach(textItem => { 
+          if (textItem && textItem.trim() !== "") {
+            const num = parseInt(textItem.trim(), 10);
+            if (!isNaN(num)) {
+              parsedNumbers.push(num); 
+            }
+          }
+        });
+      }
+      return parsedNumbers; 
     }
+    return [];
   }
 
-  limpiar(){
-    this.resultadoDeLaw = new ResultadoLaw();
-    this.grafico.dibujar(null);
+  clearChart() { 
+    this.benfordLawResult = new ResultadoLaw(); 
+    this.chart.dibujar(null); 
   }
-
 }
