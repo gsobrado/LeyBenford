@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ResultadoLaw } from '../Model/ResultadoLaw';
-import { CalcularBenfortLaw } from '../Utils/CalcularBenfordLaw';
+import { CalcularBenfordLaw } from '../Utils/CalcularBenfordLaw';
 import { GraficoBarraComponent } from '../shared/grafico-barra/grafico-barra.component';
 import { LoadingService } from '../services/loading/loading.service';
 
@@ -42,25 +42,25 @@ export class PruebasImagenComponent implements OnInit {
   calcular(cual : String){
     switch (cual) {
       case "todos":
-        CalcularBenfortLaw.calcularBenfond(this.arrayOfPixelTotal).then(resultado => {
+        CalcularBenfordLaw.calcularBenford(this.arrayOfPixelTotal).then(resultado => {
           this.resultadoDeLawTotal = resultado;
           this.grafico.dibujar(this.resultadoDeLawTotal);
         });
         break;
       case "red":
-        CalcularBenfortLaw.calcularBenfond(this.arrayOfPixelRed).then(resultado => {
+        CalcularBenfordLaw.calcularBenford(this.arrayOfPixelRed).then(resultado => {
           this.resultadoDeLawTotal = resultado;
           this.grafico.dibujar(this.resultadoDeLawTotal);
         });
         break;
       case "green":
-        CalcularBenfortLaw.calcularBenfond(this.arrayOfPixelGreen).then(resultado => {
+        CalcularBenfordLaw.calcularBenford(this.arrayOfPixelGreen).then(resultado => {
           this.resultadoDeLawTotal = resultado;
           this.grafico.dibujar(this.resultadoDeLawTotal);
         });
         break;
       case "blue":
-        CalcularBenfortLaw.calcularBenfond(this.arrayOfPixelBlue).then(resultado => {
+        CalcularBenfordLaw.calcularBenford(this.arrayOfPixelBlue).then(resultado => {
           this.resultadoDeLawTotal = resultado;
           this.grafico.dibujar(this.resultadoDeLawTotal);
         });

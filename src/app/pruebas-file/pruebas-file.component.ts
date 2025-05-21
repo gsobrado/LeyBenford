@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ResultadoLaw } from '../Model/ResultadoLaw';
 import { GraficoBarraComponent } from '../shared/grafico-barra/grafico-barra.component';
-import { CalcularBenfortLaw } from '../Utils/CalcularBenfordLaw';
+import { CalcularBenfordLaw } from '../Utils/CalcularBenfordLaw';
 
 @Component({
   selector: 'app-pruebas-file',
@@ -35,7 +35,7 @@ export class PruebasFileComponent implements OnInit {
   
   calcular(){
     if(this.arrayOfBytes.length > 0){
-      CalcularBenfortLaw.calcularBenfond(this.arrayOfBytes).then(resultado => {
+      CalcularBenfordLaw.calcularBenford(this.arrayOfBytes).then(resultado => {
         this.resultadoDeLaw = resultado;
         this.grafico.dibujar(this.resultadoDeLaw);
       });
